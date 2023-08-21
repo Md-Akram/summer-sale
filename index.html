@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="./images/Summer 1.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./script.js"></script>
+    <script defer src="./script.js"></script>
 </head>
 
 <body>
@@ -34,47 +34,59 @@
                         Have coupon?
                     </p>
                     <div class="flex flex-row w-11/12">
-                        <input type="text" class="rounded-l p-3 border border-grey-500" placeholder="Coupon code" />
-                        <button class="bg-[#e527b2] text-white rounded-r p-3 " disabled>
+                        <input id="discount-code" type="text" class="rounded-l p-3 border border-grey-500"
+                            placeholder="Coupon code" />
+                        <button onclick="handleApplyBtn()" id="apply-btn" class="bg-[#e527b2] text-white rounded-r p-3 "
+                            disabled>
                             Apply
                         </button>
                     </div>
                 </div>
                 <div class="cart rounded mt-4 p-3 bg-[#ffffff]">
-                    <div class="puchased-items py-2">
-                        <p class="text-2xl capitalize">1. home cooker</p>
-                        <p class="text-2xl">1. home cooker</p>
-                        <p class="text-2xl">1. home cooker</p>
-
+                    <div id="puchased-items" class=" py-2">
                     </div>
                     <hr>
                     <div class="total-price-section py-2">
                         <p class="text-2xl">Total price:
                             <span class="text-gray-500">
-                                <span>257.00</span>TK
+                                <span id="total-price">0 </span>TK
                             </span>
                         </p>
                         <p class="text-2xl">Discount price:
                             <span class="text-gray-500">
-                                <span>257.00</span>TK
+                                <span id="discount-price">0 </span>TK
                             </span>
                         </p>
                         <p class="text-2xl">Total:
                             <span class="text-gray-500">
-                                <span>257.00</span>TK
+                                <span id="total">0 </span>TK
                             </span>
                         </p>
 
                     </div>
                     <hr>
-                    <button class="bg-[#e527b2] text-white rounded p-3 mt-4" disabled="disabled">Make Purchase</button>
+                    <button id="make-purchase" class="bg-[#e527b2] text-white rounded p-3 mt-4"
+                        onclick="my_modal_5.showModal()" disabled>Make
+                        Purchase</button>
+                    <!-- Open the modal using ID.showModal() method -->
+                    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                        <form method="dialog" class="modal-box flex flex-col justify-center items-center">
+                            <img class="w-1/2" src="./images/congo.png" alt="congo">
+                            <h3 class="font-bold text-lg">Congratulations!</h3>
+                            <p class="py-4">Your purchase is successful</p>
+                            <div class="modal-action">
+                                <button id="reset-btn" onclick="handleResetBtn()" class="btn bg-[#e527b2] text-white">Go
+                                    Home</button>
+                            </div>
+                        </form>
+                    </dialog>
                 </div>
             </div>
             <div class="flex flex-col">
                 <p class="text-2xl font-bold my-4">Kitchenware</p>
-                <div class="flex flex-col md:flex-row flex-wrap">
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod1.png" alt="product-1" class="w-full h-3/4 bg-gray-500">
+                <div class="flex flex-col md:flex-row flex-wrap items-center md:justify-items-start">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod1.png" alt="product-1" class="w-full aspect-square  bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
@@ -82,11 +94,11 @@
                             <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">K. Accossories</p>
-                        <p class="text-xl text-gray-500 my-3">39.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">K. Accossories</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">39.00</span><span>TK</span></p>
                     </div>
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod2.png" alt="product-1" class="w-full h-3/4 bg-gray-500">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod2.png" alt="product-1" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
@@ -94,11 +106,11 @@
                             <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">K. Accossories</p>
-                        <p class="text-xl text-gray-500 my-3">25.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">K. Accossories</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">25.00</span><span>TK</span></p>
                     </div>
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod3.png" alt="product-1" class="w-full bg-gray-500">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod3.png" alt="product-1" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" checked />
@@ -106,15 +118,15 @@
                             <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">Home Cooker</p>
-                        <p class="text-xl text-gray-500 my-3">49.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">Home Cooker</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">49.00</span><span>TK</span></p>
                     </div>
 
                 </div>
                 <p class="text-2xl font-bold my-4">Sportswear</p>
-                <div class="flex flex-col md:flex-row flex-wrap">
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod4.png" alt="product-1" class="w-full h-3/4 bg-gray-500">
+                <div class="flex flex-col md:flex-row flex-wrap items-center md:justify-items-start">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod4.png" alt="product-1" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" checked />
@@ -122,11 +134,11 @@
                             <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">Sports Back Cap</p>
-                        <p class="text-xl text-gray-500 my-3">49.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">Sports Back Cap</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">49.00</span><span>TK</span></p>
                     </div>
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod5.png" alt="product-5" class="w-full h-3/4 bg-gray-500">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod5.png" alt="product-5" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" checked />
@@ -134,11 +146,11 @@
                             <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">Full Jersey Set</p>
-                        <p class="text-xl text-gray-500 my-3">69.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">Full Jersey Set</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">69.00</span><span>TK</span></p>
                     </div>
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod6.png" alt="product-6" class="w-full h-3/4 bg-gray-500">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod6.png" alt="product-6" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" checked />
@@ -146,15 +158,15 @@
                             <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">Sports Cates</p>
-                        <p class="text-xl text-gray-500 my-3">159.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">Sports Cates</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">169.00</span><span>TK</span></p>
                     </div>
 
                 </div>
                 <p class="text-2xl font-bold my-4">Fruniture</p>
-                <div class="flex flex-col md:flex-row flex-wrap">
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod7.png" alt="product-7" class="w-full h-3/4 bg-gray-500">
+                <div class="flex flex-col md:flex-row flex-wrap items-center md:justify-items-start">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod7.png" alt="product-7" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-7" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-7" class="mask mask-star-2 bg-orange-400" checked />
@@ -162,11 +174,11 @@
                             <input type="radio" name="rating-7" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-7" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">Single Relax Chair</p>
-                        <p class="text-xl text-gray-500 my-3">185.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">Single Relax Chair</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">185.00</span><span>TK</span></p>
                     </div>
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod8.png" alt="product-8" class="w-full h-3/4 bg-gray-500">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod8.png" alt="product-8" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" checked />
@@ -174,11 +186,11 @@
                             <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">Children play</p>
-                        <p class="text-xl text-gray-500 my-3">299.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">Children play</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">299.00</span><span>TK</span></p>
                     </div>
-                    <div class="card bg-[#ffffff] p-4 flex flex-col md:w-[300px] w-full items-center m-2">
-                        <img src="./images/prod9.png" alt="product-9" class="w-full h-3/4 bg-gray-500">
+                    <div class="card cursor-pointer  bg-[#ffffff] p-4 flex flex-col w-[275px] items-center m-2">
+                        <img src="./images/prod9.png" alt="product-9" class="w-full aspect-square bg-gray-500">
                         <div class="rating my-3">
                             <input type="radio" name="rating-9" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-9" class="mask mask-star-2 bg-orange-400" checked />
@@ -186,8 +198,8 @@
                             <input type="radio" name="rating-9" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-9" class="mask mask-star-2 bg-orange-400" />
                         </div>
-                        <p class="text-xl font-bold">Flexible Sofa</p>
-                        <p class="text-xl text-gray-500 my-3">339.00 <span>TK</span></p>
+                        <p class="product-name text-xl font-bold">Flexible Sofa</p>
+                        <p class="text-xl text-gray-500 my-3"><span id="product-price">339.00</span><span>TK</span></p>
                     </div>
 
                 </div>
